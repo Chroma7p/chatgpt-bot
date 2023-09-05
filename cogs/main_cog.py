@@ -78,6 +78,19 @@ class MainCog(commands.Cog):
             await interaction.response.send_message(f"モデルを`{model_name.value}`に変更しました")
         else:
             await interaction.response.send_message(f"このチャンネルではこのコマンドは使えません")
+            
+    @app_commands.command(name="reset", description="チャットをリセットします")
+    async def reset(self, interaction:discord.Interaction):
+        channel = interaction.channel
+        if channel.id in CHANNEL_LIST:
+            try:
+                chats[channel.id].reset()
+            except Exception as e:
+                await interaction.response.send_message(f"リセットに失敗しました\n```{e}```")
+
+            await interaction.response.send_message(f"リセットしました")
+        else:
+            await interaction.response.send_message(f"このチャンネルではこのコマンドは使えません")
 
 
 # Cogとして使うのに必要なsetup関数
