@@ -53,8 +53,8 @@ class MainCog(commands.Cog):
 
             except Exception as e:
                 await channel.send(f"エラーが発生しました\n```{e}```")
-        else:
-            await channel.send("だめだね")
+                return await self.bot.process_commands(message)
+        
         return await self.bot.process_commands(message)
 
     # コマンドの記述
