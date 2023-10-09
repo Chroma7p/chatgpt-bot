@@ -17,8 +17,8 @@ bot = commands.Bot(command_prefix="/", intents=discord.Intents.all())
 @bot.event
 # botの起動が完了したとき
 async def on_ready():
-    print("Hello!")  # コマンドラインにHello!と出力
-
+    print("Logged in as")
+    print(bot.user.name)
 
 async def main():
     # コグのフォルダ
